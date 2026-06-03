@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { SuggestedTask } from "@/types/task";
 import { extractMockTasks } from "@/lib/mockExtraction";
+import TaskCard from "@/components/TaskCard";
 
 export default function InputPage() {
   const [note, setNote] = useState("");
@@ -14,8 +15,23 @@ export default function InputPage() {
     setTasks(extracted);
   }
 
+  function handleApprove(id: string) {
+    setTasks((prev) =>
+      prev.map((task) =>
+        task.id === id ? { ...task, status: "approved" } : task
+      )
+    );
+  }
+
+  function handleReject(id: string) {
+    setTasks((prev) => prev.filter((task) => task.id !== id));
+  }
+
+  const suggestedTasks = tasks.filter((t) => t.status === "suggested");
+  const approvedTasks = tasks.filter((t) => t.status === "approved");
+
   return (
-    <main className="min-h-screen bg-gray-950 text-white flex flex-col items-center justify-center px-4">
+    <main className="min-h-screen bg-gray-950 text-white flex flex-col items-center justify-center px-4 py-12">
       <div className="max-w-2xl w-full space-y-6">
         <h1 className="text-3xl font-bold">What's on your mind?</h1>
         <p className="text-gray-400">
@@ -34,19 +50,32 @@ export default function InputPage() {
           Organize my chaos
         </button>
 
-        {tasks.length > 0 && (
+        {suggestedTasks.length > 0 && (
           <div className="space-y-4">
-            <h2 className="text-xl font-semibold">Suggested Tasks</h2>
-            {tasks.map((task) => (
+            <h2 className="text-xl font-semibold">Review Suggested Tasks</h2>
+            {suggestedTasks.map((task) => (
+              <TaskCard
+                key={task.id}
+                task={task}
+                onApprove={handleApprove}
+                onReject={handleReject}
+              />
+            ))}
+          </div>
+        )}
+
+        {approvedTasks.length > 0 && (
+          <div className="space-y-4">
+            <h2 className="text-xl font-semibold text-green-400">
+              Approved Tasks
+            </h2>
+            {approvedTasks.map((task) => (
               <div
                 key={task.id}
-                className="bg-gray-900 border border-gray-700 rounded-lg p-4 space-y-1"
+                className="bg-gray-900 border border-green-700 rounded-lg p-4"
               >
                 <p className="font-semibold">{task.title}</p>
-                <p className="text-sm text-gray-400">
-                  {task.category} · {task.priority} priority · {task.estimatedEffortMinutes} min
-                </p>
-                <p className="text-sm text-gray-500">Due: {task.suggestedDueDate ?? "No date"}</p>
+                <p className="text-sm text-gray-400">{task.category}</p>
               </div>
             ))}
           </div>
