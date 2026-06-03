@@ -1,0 +1,1 @@
+i have a design idea where i want to have it so when i past something it then throws it random on the screen and when i am done it will have visual effect of swiriling all of them kinda like a blackhole and then the next process happens 
