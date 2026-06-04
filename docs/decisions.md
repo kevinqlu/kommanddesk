@@ -63,9 +63,7 @@ Real LLM extraction added only after MVP is working end to end.
 Keeps the architecture clean and testable without API dependencies.
 
 ## Future Architecture - File Ingestion at Scale
-Upload - files go to S3 instead of the backend server 
-so the server stays stateless and does not get overloaded 
-handling large file uploads
-Text extraction - microservice or serverless function, because the app should still function while processing
-Chunking and Token Management - breaking up the text into important/necessary text that AI can use. This reduces cost and filters before it hits the validation
-validation - no bad input/handled before AI touches it
+- Upload - files go to S3 instead of the backend serverso the server stays stateless and does not get overloaded handling large file uploads
+- Text extraction - microservice or serverless function, because the app should still function while processing
+- Chunking and Token Management - breaking up the text into important/necessary text that AI can use. This reduces cost and filters before it hits the validation
+-Validation - no bad input/handled before AI touches it

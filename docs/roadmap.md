@@ -1,4 +1,6 @@
 # Roadmap
+Note: Phases 1-2 and Phase 5 map to the current 17 milestone plan.
+Phases 3, 4, and 6 are post-launch features without assigned milestone numbers yet.
 
 ## MVP (Current Sprint - Milestones 1-10)
 - Note input and mock extraction
