@@ -1,5 +1,6 @@
 "use client";
 
+import { saveTask } from "@/lib/api";
 import { useState } from "react";
 import { SuggestedTask } from "@/types/task";
 import { extractMockTasks } from "@/lib/mockExtraction";
@@ -15,12 +16,30 @@ export default function InputPage() {
     setTasks(extracted);
   }
 
-  function handleApprove(id: string) {
-    setTasks((prev) =>
-      prev.map((task) =>
-        task.id === id ? { ...task, status: "approved" } : task
-      )
-    );
+  async function handleApprove(id: string) {
+    const task = tasks.find((t) => t.id === id);
+    if (!task) return;
+
+    try {
+      await saveTask({
+        title: task.title,
+        category: task.category,
+        priority: task.priority,
+        estimatedEffortMinutes: task.estimatedEffortMinutes,
+        suggestedDueDate: task.suggestedDueDate,
+        status: "approved",
+        sourceText: task.sourceText,
+        mode: task.mode,
+      });
+
+      setTasks((prev) =>
+        prev.map((t) =>
+          t.id === id ? { ...t, status: "approved" } : t
+        )
+      );
+    } catch (error) {
+      console.error("Failed to save task:", error);
+    }
   }
 
   function handleReject(id: string) {
