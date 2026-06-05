@@ -14,6 +14,12 @@ export default function Home() {
         >
           Throw all your chaos here
         </a>
+        <a
+          href="/dashboard"
+          className="inline-block border border-gray-600 hover:border-gray-400 text-gray-400 hover:text-white text-sm font-semibold px-6 py-3 rounded-lg transition-colors"
+        >
+          View Dashboard
+        </a>
       </div>
     </main>
   )
