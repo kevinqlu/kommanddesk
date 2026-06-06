@@ -21,3 +21,6 @@ target/
 # IDE
 .idea/
 .vscode/
+
+# Environment files
+apps/api/.env
