@@ -20,6 +20,13 @@ export default function Home() {
         >
           View Dashboard
         </a>
+
+        <a
+          href="/demo"
+          className="inline-block border border-yellow-600 hover:border-yellow-400 text-yellow-400 hover:text-yellow-300 text-sm font-semibold px-6 py-3 rounded-lg transition-colors"
+        >
+          Try Demo
+        </a>
       </div>
     </main>
   )

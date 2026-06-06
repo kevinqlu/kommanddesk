@@ -47,3 +47,12 @@ Phases 3, 4, and 6 are post-launch features without assigned milestone numbers y
 - NotebookLM for study plan extraction
 - Session timer tied to approved tasks
 - Auto-log time spent per task
+
+## AI-Assisted Scheduling (Phase 2)
+After task editing, send tasks back to AI with a time constraint 
+(1 day, 1 week). AI fits tasks into a realistic schedule, 
+resolves priority conflicts, and returns an optimized plan 
+for final user approval.
+
+## 01 > 1
+after editing, the time estimate in single digits make sure the box isn't saying 01
