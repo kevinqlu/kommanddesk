@@ -50,6 +50,12 @@ export default function InputPage() {
     }
   }
 
+  function handleEdit(id: string, updates: Partial<SuggestedTask>) {
+    setTasks((prev) =>
+      prev.map((t) => (t.id === id ? { ...t, ...updates } : t))
+    );
+  }
+
   function handleReject(id: string) {
     setTasks((prev) => prev.filter((task) => task.id !== id));
   }
@@ -76,6 +82,7 @@ export default function InputPage() {
         >
           Organize my chaos
         </button>
+        
 
         {suggestedTasks.length > 0 && (
           <div className="space-y-4">
@@ -86,10 +93,13 @@ export default function InputPage() {
                 task={task}
                 onApprove={handleApprove}
                 onReject={handleReject}
+                onEdit={handleEdit}
               />
             ))}
           </div>
         )}
+
+        
 
         {approvedTasks.length > 0 && (
           <div className="space-y-4">

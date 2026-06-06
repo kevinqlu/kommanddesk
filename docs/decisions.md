@@ -67,3 +67,10 @@ Keeps the architecture clean and testable without API dependencies.
 - Text extraction - microservice or serverless function, because the app should still function while processing
 - Chunking and Token Management - breaking up the text into important/necessary text that AI can use. This reduces cost and filters before it hits the validation
 -Validation - no bad input/handled before AI touches it
+
+## Demo Mode Design
+Demo mode lives at /demo route, publicly accessible with no password.
+Demo tasks are stored in React state only, never saved to the database.
+Private mode at /input and /dashboard is for personal use.
+Authentication to protect private routes is a future milestone.
+Sample notes are provided so visitors can try without typing.
