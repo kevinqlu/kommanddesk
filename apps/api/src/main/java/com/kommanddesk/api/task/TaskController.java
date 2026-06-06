@@ -1,5 +1,6 @@
 package com.kommanddesk.api.task;
 
+import java.util.Map;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -10,9 +11,26 @@ import java.util.List;
 public class TaskController {
 
     private final TaskService taskService;
+    private final AiExtractionService aiExtractionService;
 
-    public TaskController(TaskService taskService) {
-        this.taskService = taskService;
+
+    public TaskController(TaskService taskService, AiExtractionService aiExtractionService) {
+    this.taskService = taskService;
+    this.aiExtractionService = aiExtractionService;
+}
+
+    @PostMapping("/extract")
+    public ResponseEntity<?> extractTasks(@RequestBody Map<String, String> body) {
+        try {
+            String note = body.get("note");
+            if (note == null || note.isBlank()) {
+                return ResponseEntity.badRequest().body("Note cannot be empty");
+            }
+            List<TaskDTO> tasks = aiExtractionService.extractTasks(note);
+            return ResponseEntity.ok(tasks);
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().body("AI extraction failed: " + e.getMessage());
+        }
     }
 
     @PostMapping
