@@ -1,19 +1,27 @@
 "use client";
 
-import { saveTask } from "@/lib/api";
+
+
 import { useState } from "react";
 import { SuggestedTask } from "@/types/task";
 import { extractMockTasks } from "@/lib/mockExtraction";
 import TaskCard from "@/components/TaskCard";
+import { saveTask, extractTasksWithAI } from "@/lib/api";
 
 export default function InputPage() {
   const [note, setNote] = useState("");
   const [tasks, setTasks] = useState<SuggestedTask[]>([]);
 
-  function handleExtract() {
+  async function handleExtract() {
     if (note.trim() === "") return;
-    const extracted = extractMockTasks(note);
-    setTasks(extracted);
+    try {
+      const extracted = await extractTasksWithAI(note);
+      setTasks(extracted);
+    } catch (error) {
+      console.error("Extraction failed:", error);
+      const extracted = extractMockTasks(note);
+      setTasks(extracted);
+    }
   }
 
   async function handleApprove(id: string) {
