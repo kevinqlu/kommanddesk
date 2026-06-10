@@ -56,3 +56,13 @@ for final user approval.
 
 ## 01 > 1
 after editing, the time estimate in single digits make sure the box isn't saying 01
+
+## Future App Concept — Gamified Task System
+Tasks become collectible cards that users open in packs to complete work.
+Completed tasks go to a trophy/codex room.
+Task difficulty and priority determine XP and card rarity.
+Failed tasks require recovery tasks to restore HP.
+Leaderboard shows most tasks completed.
+Progression system mirrors Pokemon gym structure —
+complete themed task sets to unlock new challenges.
+Buff cards unlock real-world rewards like music or breaks.
