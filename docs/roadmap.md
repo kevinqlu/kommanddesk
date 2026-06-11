@@ -66,3 +66,8 @@ Leaderboard shows most tasks completed.
 Progression system mirrors Pokemon gym structure —
 complete themed task sets to unlock new challenges.
 Buff cards unlock real-world rewards like music or breaks.
+
+## Navigation Polish
+After approving tasks on /input, show a "Go to Dashboard" 
+button or banner so users have a clear next step instead of 
+staying on the input page indefinitely.
