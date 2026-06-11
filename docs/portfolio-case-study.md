@@ -47,4 +47,5 @@ Hibernate/JPA maps Java objects to database tables automatically.
 
 ## Links
 - GitHub: https://github.com/kevinqlu/kommanddesk
-- Live Demo: [coming after deployment]
+- Live Demo: https://kommanddesk.vercel.app/demo
+- Live App: https://kommanddesk.vercel.app
